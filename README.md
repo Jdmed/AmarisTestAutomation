@@ -1,2 +1,3 @@
 # AmarisTestAutomation
-Technical task for the IVVQ position
+Technical tasks for the IVVQ position
+
