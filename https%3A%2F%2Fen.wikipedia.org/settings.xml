@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:interface xsi:type="con:RestService" id="5d17e5a5-e723-4763-9c3b-c25c53600706" wadlVersion="http://wadl.dev.java.net/2009/02" name="https://en.wikipedia.org" type="rest" xmlns:con="http://eviware.com/soapui/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <con:settings>
+    <con:setting id="5d17e5a5-e723-4763-9c3b-c25c53600706fileName">https%3A%2F%2Fen.wikipedia.org</con:setting>
+  </con:settings>
+  <con:definitionCache type="TEXT" rootPart=""/>
+  <con:endpoints>
+    <con:endpoint>https://en.wikipedia.org</con:endpoint>
+  </con:endpoints>
+</con:interface>

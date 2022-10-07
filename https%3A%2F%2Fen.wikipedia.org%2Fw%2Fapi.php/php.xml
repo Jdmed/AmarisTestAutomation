@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:resource name="php" path="/w/api.php" id="3bac6169-24a2-48d3-ab07-e6f364a97496" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="3bac6169-24a2-48d3-ab07-e6f364a97496fileName">php</con:setting>
+  </con:settings>
+  <con:parameters/>
+  <con:method name="Method 1" id="32859560-a429-48c4-b4d3-5092f8b112b8" method="GET">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter required="true">
+        <con:name>action</con:name>
+        <con:value/>
+        <con:style>QUERY</con:style>
+        <con:default/>
+      </con:parameter>
+      <con:parameter required="true">
+        <con:name>format</con:name>
+        <con:value/>
+        <con:style>QUERY</con:style>
+        <con:default/>
+      </con:parameter>
+      <con:parameter required="true">
+        <con:name>generator</con:name>
+        <con:value/>
+        <con:style>QUERY</con:style>
+        <con:default/>
+      </con:parameter>
+    </con:parameters>
+    <con:request name="Request 1" id="cc6a6080-6a47-416c-9ebc-6ee74127a388" mediaType="application/json">
+      <con:settings>
+        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+      </con:settings>
+      <con:endpoint>https://en.wikipedia.org</con:endpoint>
+      <con:request/>
+      <con:originalUri>https://en.wikipedia.org/w/api.php</con:originalUri>
+      <con:credentials>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:parameters>
+        <con:entry key="format" value="json"/>
+        <con:entry key="action" value="query"/>
+        <con:entry key="generator" value="random"/>
+      </con:parameters>
+      <con:parameterOrder>
+        <con:entry>action</con:entry>
+        <con:entry>format</con:entry>
+        <con:entry>generator</con:entry>
+      </con:parameterOrder>
+    </con:request>
+  </con:method>
+</con:resource>

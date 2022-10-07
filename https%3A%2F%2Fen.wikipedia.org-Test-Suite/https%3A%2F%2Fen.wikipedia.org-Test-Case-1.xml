@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="c8958aba-0625-444f-9db8-0195d04f4e11" discardOkResults="false" failOnError="false" failTestCaseOnErrors="true" keepSession="false" name="https://en.wikipedia.org Test Case 1" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="c8958aba-0625-444f-9db8-0195d04f4e11fileName">https%3A%2F%2Fen.wikipedia.org-Test-Case-1</con:setting>
+  </con:settings>
+  <con:testStep type="restrequest" name="Random_wiki" id="214336da-e518-4bd7-bd1f-984ab3801f74">
+    <con:settings/>
+    <con:config service="https://en.wikipedia.org/w/api.php" resourcePath="/w/api.php" methodName="Method 1" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Random_wiki" id="cc6a6080-6a47-416c-9ebc-6ee74127a388" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>https://en.wikipedia.org</con:endpoint>
+        <con:request/>
+        <con:originalUri>https://en.wikipedia.org/w/api.php</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="2de0e3da-9d38-41e1-9157-fdceee6ecf2b" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>200</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:assertion type="JsonPath Count" id="42ab8895-bd3f-4296-9b9d-c7620aa35aad" name="Pages count equals one">
+          <con:configuration>
+            <path>$['query']['pages']</path>
+            <content>1</content>
+            <allowWildcards>false</allowWildcards>
+            <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+            <ignoreComments>false</ignoreComments>
+          </con:configuration>
+        </con:assertion>
+        <con:assertion type="JsonPath Existence Match" id="fa482dc7-ade7-486f-b736-eaf3f4a36c0b" name="Check for existence of [title]">
+          <con:configuration>
+            <path>$['query']['pages'][*]['title']</path>
+            <content>true</content>
+            <allowWildcards>false</allowWildcards>
+            <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+            <ignoreComments>false</ignoreComments>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="format" value="json"/>
+          <con:entry key="action" value="query"/>
+          <con:entry key="generator" value="random"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>action</con:entry>
+          <con:entry>format</con:entry>
+          <con:entry>generator</con:entry>
+        </con:parameterOrder>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="transfer" name="PropertyTransfer" id="05555933-cb00-4ce3-9975-ed4b36426174">
+    <con:settings/>
+    <con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" entitize="true" transferChildNodes="false" ignoreEmpty="false" transferToAll="false">
+        <con:name>pageid</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Random_wiki</con:sourceStep>
+        <con:sourcePath>$['query']['pages'][*]['pageid']</con:sourcePath>
+        <con:targetType>pageid</con:targetType>
+        <con:targetStep>first_wiki_data</con:targetStep>
+        <con:targetPath/>
+        <con:type>JSONPATH</con:type>
+        <con:targetTransferType>JSONPATH</con:targetTransferType>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+        <con:name>title</con:name>
+        <con:sourceType>Response</con:sourceType>
+        <con:sourceStep>Random_wiki</con:sourceStep>
+        <con:sourcePath>$['query']['pages'][*]['title']</con:sourcePath>
+        <con:targetType>title</con:targetType>
+        <con:targetStep>first_wiki_data</con:targetStep>
+        <con:type>JSONPATH</con:type>
+        <con:targetTransferType>JSONPATH</con:targetTransferType>
+        <con:upgraded>true</con:upgraded>
+      </con:transfers>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="properties" name="first_wiki_data" id="7f9909de-f209-411f-8f18-571daf74a6f1">
+    <con:settings/>
+    <con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:properties>
+        <con:property>
+          <con:name>pageid</con:name>
+          <con:value>[20496673]</con:value>
+        </con:property>
+        <con:property>
+          <con:name>title</con:name>
+          <con:value>[Talk:Whirligig (disambiguation)]</con:value>
+        </con:property>
+      </con:properties>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="Page_validations" id="6d35ee8c-5389-4eb9-9360-b7a2924ede7f">
+    <con:settings/>
+    <con:config service="https://en.wikipedia.org" resourcePath="/w/api.php" methodName="Api.php" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Page_validations" id="bc93220f-ff3b-48f7-b657-0593cb6fc54d" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>https://en.wikipedia.org</con:endpoint>
+        <con:request/>
+        <con:originalUri>https://en.wikipedia.org/w/api.php</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="1fe4039e-958d-4563-b9be-f00e1f095b7d" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>200</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:assertion type="JsonPath Count" id="35a20648-f4f8-45c9-8015-aa340b0e5663" name="JSONPath Count">
+          <con:configuration>
+            <path>$['query']['pages']</path>
+            <content>1</content>
+            <allowWildcards>false</allowWildcards>
+            <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+            <ignoreComments>false</ignoreComments>
+          </con:configuration>
+        </con:assertion>
+        <con:assertion type="JsonPath Existence Match" id="794506d4-aa86-4755-a3aa-52c9f1546e41" name="Check for existence of [title]">
+          <con:configuration>
+            <path>$['query']['pages'][*]['title']</path>
+            <content>true</content>
+            <allowWildcards>false</allowWildcards>
+            <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+            <ignoreComments>false</ignoreComments>
+          </con:configuration>
+        </con:assertion>
+        <con:assertion type="JsonPath Match" id="fadcf632-a77e-4081-b93c-ec9d0aad8954" name="Match content of [title]">
+          <con:configuration>
+            <path>$['query']['pages'][*]['title']</path>
+            <content>${first_wiki_data#title}</content>
+            <allowWildcards>false</allowWildcards>
+            <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+            <ignoreComments>false</ignoreComments>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="pageids" value="${first_wiki_data#pageid#$[0]}"/>
+          <con:entry key="prop" value="info"/>
+          <con:entry key="inprop" value="url"/>
+          <con:entry key="format" value="json"/>
+          <con:entry key="action" value="query"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>action</con:entry>
+          <con:entry>prop</con:entry>
+          <con:entry>pageids</con:entry>
+          <con:entry>inprop</con:entry>
+          <con:entry>format</con:entry>
+        </con:parameterOrder>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="datasource" name="Random_id" id="25e01c15-cc04-407f-a6b0-e18392a7550a">
+    <con:settings/>
+    <con:config xsi:type="con:DataSourceStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:dataSource type="Data Generator">
+        <con:configuration>
+          <generatedDataCount>10</generatedDataCount>
+          <generatorsTotalNumber>1</generatorsTotalNumber>
+          <lastSelectedProperty>-1</lastSelectedProperty>
+          <GeneratorType0>INT</GeneratorType0>
+          <PropertyName0>pageids</PropertyName0>
+          <repetitionCountpageids>0</repetitionCountpageids>
+          <repeatValuespageids>false</repeatValuespageids>
+          <IntegerDataGeneratorMinValuepageids>1</IntegerDataGeneratorMinValuepageids>
+          <IntegerDataGeneratorMaxValuepageids>9999999</IntegerDataGeneratorMaxValuepageids>
+          <IntegerDataGeneratorStepValuepageids>1</IntegerDataGeneratorStepValuepageids>
+          <IntegerDataGeneratorConsequentValuespageids>false</IntegerDataGeneratorConsequentValuespageids>
+          <escapeSpaceSequence/>
+        </con:configuration>
+      </con:dataSource>
+      <con:shared>true</con:shared>
+      <con:restartShared>true</con:restartShared>
+      <con:property>pageids</con:property>
+      <con:restartOnRun>true</con:restartOnRun>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="Request 1" id="dc216016-463b-4d93-8440-79a8d5b08c75">
+    <con:settings/>
+    <con:config service="https://en.wikipedia.org" resourcePath="/w/api.php" methodName="Api.php" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="Request 1" id="b25c5fc0-a3b4-40b5-a393-e4f30a0d50c1" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>https://en.wikipedia.org</con:endpoint>
+        <con:request/>
+        <con:originalUri>https://en.wikipedia.org/w/api.php</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" name="Valid HTTP Status Codes" id="4f070322-800d-4294-ab89-467389a0cd87">
+          <con:settings/>
+          <con:configuration>
+            <codes>200</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:assertion type="JsonPath Count" name="JSONPath Count" id="837461d3-8fa5-40bb-9e37-01fa64c1baba">
+          <con:configuration>
+            <path>$['query']['pages']</path>
+            <content>1</content>
+            <allowWildcards>false</allowWildcards>
+            <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+            <ignoreComments>false</ignoreComments>
+          </con:configuration>
+        </con:assertion>
+        <con:assertion type="JsonPath Existence Match" name="Check for existence of [title]" id="8785898f-cb94-494c-a623-ed2efeaa0566">
+          <con:configuration>
+            <path>$['query']['pages'][*]['title']</path>
+            <content>true</content>
+            <allowWildcards>false</allowWildcards>
+            <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+            <ignoreComments>false</ignoreComments>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="pageids" value="${Random_id#pageids}"/>
+          <con:entry key="prop" value="info"/>
+          <con:entry key="inprop" value="url"/>
+          <con:entry key="format" value="json"/>
+          <con:entry key="action" value="query"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>action</con:entry>
+          <con:entry>prop</con:entry>
+          <con:entry>pageids</con:entry>
+          <con:entry>inprop</con:entry>
+          <con:entry>format</con:entry>
+        </con:parameterOrder>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="datasourceloop" name="Data Source Loop" id="5b920f5e-f185-4e47-b027-180e5efaf17f">
+    <con:settings/>
+    <con:config>
+      <dataSourceStep>Random_id</dataSourceStep>
+      <targetStep>Request 1</targetStep>
+      <discardResults>true</discardResults>
+    </con:config>
+  </con:testStep>
+  <con:properties>
+    <con:property>
+      <con:name>random_id</con:name>
+      <con:value/>
+    </con:property>
+  </con:properties>
+  <con:reportParameters/>
+</con:testCase>

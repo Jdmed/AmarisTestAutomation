@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testSuite id="bbdfb1e4-227b-4847-99be-d99d65da3904" name="https://en.wikipedia.org Test Suite" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="bbdfb1e4-227b-4847-99be-d99d65da3904fileName">https%3A%2F%2Fen.wikipedia.org-Test-Suite</con:setting>
+  </con:settings>
+  <con:runType>SEQUENTIAL</con:runType>
+  <con:properties/>
+  <con:reportParameters/>
+</con:testSuite>

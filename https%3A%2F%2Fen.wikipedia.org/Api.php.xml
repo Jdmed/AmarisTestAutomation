@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:resource name="Api.php" path="/w/api.php" id="cd22d6f4-5d5d-4fc4-bb5c-d6cdcca37ec4" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="cd22d6f4-5d5d-4fc4-bb5c-d6cdcca37ec4fileName">Api.php</con:setting>
+  </con:settings>
+  <con:parameters/>
+  <con:method name="Api.php" id="206880a1-e14b-470a-9f22-fe5e7dec8161" method="GET">
+    <con:settings/>
+    <con:parameters>
+      <con:parameter required="true">
+        <con:name>action</con:name>
+        <con:value/>
+        <con:style>QUERY</con:style>
+        <con:default/>
+      </con:parameter>
+      <con:parameter required="true">
+        <con:name>prop</con:name>
+        <con:value/>
+        <con:style>QUERY</con:style>
+        <con:default/>
+      </con:parameter>
+      <con:parameter required="true">
+        <con:name>pageids</con:name>
+        <con:value/>
+        <con:style>QUERY</con:style>
+        <con:default/>
+      </con:parameter>
+      <con:parameter required="true">
+        <con:name>inprop</con:name>
+        <con:value/>
+        <con:style>QUERY</con:style>
+        <con:default/>
+      </con:parameter>
+      <con:parameter required="true">
+        <con:name>format</con:name>
+        <con:value/>
+        <con:style>QUERY</con:style>
+        <con:default/>
+      </con:parameter>
+    </con:parameters>
+    <con:representation type="RESPONSE">
+      <con:mediaType>text/html; charset=utf-8</con:mediaType>
+      <con:status>200</con:status>
+      <con:params/>
+      <con:element>html</con:element>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>text/html; charset=UTF-8</con:mediaType>
+      <con:status>200</con:status>
+      <con:params/>
+      <con:element>html</con:element>
+    </con:representation>
+    <con:representation type="FAULT">
+      <con:mediaType>text/html; charset=UTF-8</con:mediaType>
+      <con:status>503</con:status>
+      <con:params/>
+      <con:element>html</con:element>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>application/json; charset=utf-8</con:mediaType>
+      <con:status>200</con:status>
+      <con:params/>
+      <con:element xmlns:api="https://en.wikipedia.org/w/api.php">api:Response</con:element>
+    </con:representation>
+    <con:request name="Request 1" id="b25c5fc0-a3b4-40b5-a393-e4f30a0d50c1" mediaType="application/json">
+      <con:settings>
+        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        <con:setting id="com.eviware.soapui.support.editor.views.xml.form2.FormEditorView@ViewType">All</con:setting>
+      </con:settings>
+      <con:endpoint>https://en.wikipedia.org</con:endpoint>
+      <con:request/>
+      <con:originalUri>https://en.wikipedia.org/w/api.php</con:originalUri>
+      <con:credentials>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:parameters>
+        <con:entry key="pageids" value=""/>
+        <con:entry key="prop" value="info"/>
+        <con:entry key="inprop" value="url"/>
+        <con:entry key="format" value="json"/>
+        <con:entry key="action" value="query"/>
+      </con:parameters>
+      <con:parameterOrder>
+        <con:entry>action</con:entry>
+        <con:entry>prop</con:entry>
+        <con:entry>pageids</con:entry>
+        <con:entry>inprop</con:entry>
+        <con:entry>format</con:entry>
+      </con:parameterOrder>
+    </con:request>
+    <con:request name="wiki_pageids" id="bc93220f-ff3b-48f7-b657-0593cb6fc54d" mediaType="application/json">
+      <con:settings>
+        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+      </con:settings>
+      <con:endpoint>https://en.wikipedia.org</con:endpoint>
+      <con:request/>
+      <con:originalUri>https://en.wikipedia.org/w/api.php</con:originalUri>
+      <con:credentials>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:parameters>
+        <con:entry key="pageids" value=""/>
+        <con:entry key="prop" value=""/>
+        <con:entry key="inprop" value=""/>
+        <con:entry key="format" value=""/>
+        <con:entry key="action" value="18630637"/>
+      </con:parameters>
+      <con:parameterOrder>
+        <con:entry>action</con:entry>
+        <con:entry>prop</con:entry>
+        <con:entry>pageids</con:entry>
+        <con:entry>inprop</con:entry>
+        <con:entry>format</con:entry>
+      </con:parameterOrder>
+    </con:request>
+    <con:request name="random_number" id="603872aa-4d09-42f0-9518-a13204f2746e" mediaType="application/json">
+      <con:settings>
+        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+      </con:settings>
+      <con:endpoint>https://www.random.org</con:endpoint>
+      <con:request/>
+      <con:originalUri>https://www.random.org/integers/</con:originalUri>
+      <con:credentials>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:parameters>
+        <con:entry key="pageids" value="1"/>
+        <con:entry key="prop" value="9999999"/>
+        <con:entry key="inprop" value=""/>
+        <con:entry key="format" value=""/>
+        <con:entry key="action" value="1"/>
+      </con:parameters>
+      <con:parameterOrder>
+        <con:entry>action</con:entry>
+        <con:entry>prop</con:entry>
+        <con:entry>pageids</con:entry>
+        <con:entry>inprop</con:entry>
+        <con:entry>format</con:entry>
+      </con:parameterOrder>
+    </con:request>
+  </con:method>
+</con:resource>

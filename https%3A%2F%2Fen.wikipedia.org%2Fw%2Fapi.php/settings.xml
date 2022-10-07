@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:interface xsi:type="con:RestService" id="826cdb73-8936-49ca-af6d-57e7135d8369" name="https://en.wikipedia.org/w/api.php" type="rest_ex" wadlVersion="https://swagger.io/openapiv3/specification" xmlns:con="http://eviware.com/soapui/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <con:settings>
+    <con:setting id="826cdb73-8936-49ca-af6d-57e7135d8369fileName">https%3A%2F%2Fen.wikipedia.org%2Fw%2Fapi.php</con:setting>
+  </con:settings>
+  <con:definitionCache type="TEXT" rootPart="https://en.wikipedia.org/w/api.php.json">
+    <con:part>
+      <con:url>https://en.wikipedia.org/w/api.php.json</con:url>
+      <con:content>{"openapi":"3.0.1","info":{"title":"https://en.wikipedia.org/w/api.php","version":"1.0.0"},"servers":[{"url":"/"}],"paths":{"/w/api.php":{"description":"","get":{"description":"","responses":{"default":{"description":"Default response"}}}}}}</con:content>
+      <con:type>https://swagger.io/openapiv3/specification</con:type>
+    </con:part>
+  </con:definitionCache>
+  <con:endpoints>
+    <con:endpoint>https://en.wikipedia.org</con:endpoint>
+  </con:endpoints>
+</con:interface>
